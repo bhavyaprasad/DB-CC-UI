@@ -1,0 +1,26 @@
+.header1 {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 5em;
+  border-radius: 1cm;
+}
+
+.Search1 {
+  margin-bottom: 1px;
+  padding-left: 1em;
+}
+
+.table1 {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  padding-bottom: 2em;
+  border: 3px dotted gray;
+  border-radius: 10px;
+  font-size: 1.15em;
+  padding: 8px;
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3em;
+}
