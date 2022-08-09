@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useRef} from 'react';
 import { NavLink, useNavigate} from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -44,6 +44,8 @@ export default function SignIn() {
   
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+
+  const messageRef = useRef(null);
   
   const submitForm=async(e)=>{
     e.preventDefault();
@@ -66,9 +68,9 @@ export default function SignIn() {
    const data= await res.json();
   
   
+    console.log(res,data);
     
-    
-      if((res.status===200))
+      if((data===true))
         {
           
           
@@ -77,8 +79,9 @@ export default function SignIn() {
         }
       else
       {
+        messageRef.current.innerHTML="Wrong credentials."
         setTimeout(() => {
-         
+          messageRef.current.innerHTML='';
           setemail('');
           setpassword('');
         }, 2000)
@@ -97,6 +100,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        < div class="mb-3" ref={messageRef} style={{color: "red"}}> </div>
         <form className={classes.form} noValidate onSubmit={submitForm}>
           <TextField
             value={email}
