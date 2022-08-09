@@ -53,6 +53,7 @@ export default function Signup() {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
   const [role, setrole] = useState('');
+  const [name, setname] = useState('');
   const messageRef = useRef(null);
  
 
@@ -69,6 +70,7 @@ export default function Signup() {
           },
       body:JSON.stringify({
         email,
+        name,
         password,
         role,
         
@@ -79,7 +81,7 @@ export default function Signup() {
 
    const data= await res.json();
     console.log(data);
-    messageRef.current.innerHTML=data.message;
+    //messageRef.current.innerHTML=data.message;
       if((res.status===201))
         history.push('/login');
      
@@ -110,6 +112,20 @@ export default function Signup() {
                 fullWidth
                 id="role"
                 label="Role"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+              value={name}
+              onChange={(e)=>{setname(e.target.value)}}
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="name"
+                label="Name"
                 autoFocus
               />
             </Grid>
